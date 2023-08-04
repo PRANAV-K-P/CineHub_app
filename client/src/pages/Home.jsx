@@ -16,7 +16,7 @@ function App() {
   const getMovieRequest = async (searchValue) => {
     let URL;
     if (searchValue) {
-      URL = `http://www.omdbapi.com/?s=${searchValue}&apikey=${API_KEY}`;
+      URL = `https://www.omdbapi.com/?s=${searchValue}&apikey=${API_KEY}`;
     } else {
       URL = allMovies;
     }
@@ -45,18 +45,27 @@ function App() {
     localStorage.setItem("favourite-movies", JSON.stringify(items));
   };
 
-  const addFavouriteMovie = (movie) => {
-    const newFavouriteList = [...favourites, movie];
+  const favs = (newFavouriteList) => {
     setFavourites(newFavouriteList);
     saveFavourites(newFavouriteList);
+  }
+
+  const addFavouriteMovie = (movie) => {
+    const newFavouriteList = [...favourites, movie];
+    // setFavourites(newFavouriteList);
+    // saveFavourites(newFavouriteList);
+    favs(newFavouriteList);
   };
+
+
 
   const removeFavouriteMovie = (movie) => {
     const newFavouriteList = favourites.filter(
       (favourite) => favourite.imdbID !== movie.imdbID
     );
-    setFavourites(newFavouriteList);
-    saveFavourites(newFavouriteList);
+    // setFavourites(newFavouriteList);
+    // saveFavourites(newFavouriteList);
+    favs(newFavouriteList);
   };
 
   return (
