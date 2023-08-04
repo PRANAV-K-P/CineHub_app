@@ -1,0 +1,71 @@
+body {
+    background: #141414;
+    color: #ffffff;
+}
+
+.movie-app > .row {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+}
+
+.image-container {
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.image-container:hover {
+    
+    transform: scale(1.1);
+}
+
+.image-container:hover .overlay {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.overlay {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    transition: 0.5s ease;
+    opacity: 0;
+    bottom: 0;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* .above-all {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.2;
+} */
+
+.above-all {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black; /* You can adjust the opacity as needed */
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: auto; /* Enable pointer events on the div */
+    opacity: 0.2;
+  }
+
+  .full-screen-icon:hover {
+    cursor: pointer;
+  }
+
+.close-icon {
+    cursor: pointer;
+}
