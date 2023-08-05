@@ -1,6 +1,7 @@
-import axios from 'axios'
-import {baseUrl} from './Constants/Constants'
+const axios = require('axios')
+
+const baseUrl = process.env.OMDB_BASEURL;
 const instance = axios.create({
     baseURL: baseUrl,
   });
-export default instance
+module.exports=instance

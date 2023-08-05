@@ -7,6 +7,6 @@ router.get('/search', controller.movieSearch);
 
 router.get('/all', controller.allMovies)
 
-router.post('/favourites');
+router.post('/favorites', controller.addToFavorite);
 
 module.exports = router;
