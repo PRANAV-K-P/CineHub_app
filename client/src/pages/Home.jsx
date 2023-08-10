@@ -13,7 +13,7 @@ function App() {
   const [favourites, setFavourites] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
-  const getMovieRequest = async (searchValue) => {
+  const getMovieRequest = async () => {
     let URL;
     if (searchValue) {
       URL = `https://www.omdbapi.com/?s=${searchValue}&apikey=${API_KEY}`;
@@ -31,7 +31,10 @@ function App() {
   };
 
   useEffect(() => {
-    getMovieRequest(searchValue);
+    const delayDebounceFn = setTimeout(() => {
+      getMovieRequest();
+    }, 3000);
+    return () => clearTimeout(delayDebounceFn);
   }, [searchValue]);
 
   useEffect(() => {
@@ -48,7 +51,7 @@ function App() {
   const favs = (newFavouriteList) => {
     setFavourites(newFavouriteList);
     saveFavourites(newFavouriteList);
-  }
+  };
 
   const addFavouriteMovie = (movie) => {
     const newFavouriteList = [...favourites, movie];
@@ -56,8 +59,6 @@ function App() {
     // saveFavourites(newFavouriteList);
     favs(newFavouriteList);
   };
-
-
 
   const removeFavouriteMovie = (movie) => {
     const newFavouriteList = favourites.filter(
